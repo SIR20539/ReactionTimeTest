@@ -1,9 +1,10 @@
 import * as React from 'react';
 import styled from 'styled-components';
+// import { NavLink } from 'react-router-dom';
 import Button from '../components/Button';
 const StyledDiv = styled.div`
   display: block;
-  height: 90vh;
+  height: 80vh;
   width: 100vw;
   margin: 0 auto;
   margin-bottom: 2vh;
@@ -71,36 +72,38 @@ export class Game1 extends React.Component {
     this.setState({
       gameStoped: true,
     });
-    console.log(this.results);
   };
 
   render() {
     const { gameActive, time, gameStoped } = this.state;
     return (
-      <StyledDiv
-        style={this.state.time !== 0 ? { backgroundColor: 'red' } : null}
-        onClick={gameActive && time !== 0 ? this.stopTimer : null}
-      >
-        {!gameActive && time === 0 ? (
-          <>
-            <p>information about game</p>
+      <>
+        <StyledDiv
+          style={this.state.time !== 0 ? { backgroundColor: 'red' } : null}
+          onClick={gameActive && time !== 0 ? this.stopTimer : null}
+        >
+          {!gameActive && time === 0 ? (
+            <>
+              <p>Tap on screen when background will change</p>
+              <div className="btnBox">
+                <Button onClick={this.startGame} text="play" />
+              </div>
+            </>
+          ) : gameStoped ? null : (
+            <p>{time} ms</p>
+          )}
+          {!gameActive && time !== 0 ? (
             <div className="btnBox">
-              <Button onClick={this.startGame} text="play" />
+              {gameStoped ? null : (
+                <Button text="restart" onClick={this.startGame} />
+              )}
+              <Button text="stop" onClick={this.stopGame} />
             </div>
-          </>
-        ) : gameStoped ? null : (
-          <p>{time} ms</p>
-        )}
-        {!gameActive && time !== 0 ? (
-          <div className="btnBox">
-            {gameStoped ? null : (
-              <Button text="restart" onClick={this.startGame} />
-            )}
-            <Button text="stop" onClick={this.stopGame} />
-          </div>
-        ) : null}
-        {gameStoped ? <p>best score:{this.bestResult}</p> : null}
-      </StyledDiv>
+          ) : null}
+          {gameStoped ? <p>Best result:{this.bestResult}</p> : null}
+        </StyledDiv>
+        <Button text={'back'} link="/" />
+      </>
     );
   }
 }

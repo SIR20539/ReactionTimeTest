@@ -1,20 +1,32 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+
 import Button from './Button';
-// import { score } from '../data';
+import styled from 'styled-components';
+
+const NavWrap = styled.div`
+  display: flex;
+  flex-direction: column;
+
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%);
+`;
+const divStyle = {
+  backgroundColor: 'gray',
+  height: '100vh',
+  width: '100vw',
+};
+
 const MainMenu = () => {
   return (
-    <>
-      <NavLink to="/game1">
-        <Button text={'button 1'} />
-      </NavLink>
-      <NavLink to="/game2">
-        <Button text={'button 2'} />
-      </NavLink>
-      <NavLink to="/game3">
-        <Button text={'button 3'} />
-      </NavLink>
-    </>
+    <div style={divStyle}>
+      <NavWrap>
+        <Button text={'button 1'} link="/game1" />
+        <Button text={'button 2'} link="/game2" />
+        <Button text={'button 3'} link="/game3" />
+      </NavWrap>
+    </div>
   );
 };
 
