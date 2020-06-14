@@ -4,7 +4,7 @@ import styled from 'styled-components';
 
 const StyledButton = styled.button`
   font-size: calc(1.5em + 1vw);
-  box-shadow: 4px 4px 0 0 gray;
+  box-shadow: 4px 4px 0 0 black;
   border: none;
   transform: rotate(-2deg);
   margin: 2vh;

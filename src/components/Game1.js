@@ -3,8 +3,7 @@ import styled from 'styled-components';
 // import { NavLink } from 'react-router-dom';
 import Button from '../components/Button';
 const StyledDiv = styled.div`
-  display: block;
-  height: 80vh;
+  height: 100vh;
   width: 100vw;
   margin: 0 auto;
   margin-bottom: 2vh;
@@ -27,6 +26,9 @@ const StyledDiv = styled.div`
   }
   button {
     margin-bottom: 10px;
+  }
+  small {
+    text-transform: lowercase;
   }
 `;
 
@@ -90,7 +92,9 @@ export class Game1 extends React.Component {
               </div>
             </>
           ) : gameStoped ? null : (
-            <p>{time} ms</p>
+            <p>
+              {time} <small>ms</small>
+            </p>
           )}
           {!gameActive && time !== 0 ? (
             <div className="btnBox">
@@ -100,9 +104,14 @@ export class Game1 extends React.Component {
               <Button text="stop" onClick={this.stopGame} />
             </div>
           ) : null}
-          {gameStoped ? <p>Best result:{this.bestResult}</p> : null}
+          {gameStoped ? (
+            <p>
+              Best result:{this.bestResult}
+              <small>ms</small>
+            </p>
+          ) : null}
+          <Button text={'back'} link="/" />
         </StyledDiv>
-        <Button text={'back'} link="/" />
       </>
     );
   }

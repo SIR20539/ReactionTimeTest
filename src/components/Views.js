@@ -2,7 +2,7 @@ import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 import MainMenu from './MainMenu';
 import { Game1 } from './Game1';
-import Game2 from './Game2';
+import { Game2 } from './Game2';
 import Game3 from './Game3';
 
 const Views = () => {
